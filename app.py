@@ -11,7 +11,7 @@ os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
 # URL da API (ajuste se necessário)
 
 # Para produção
-API_URL = "https://web-production-6daa.up.railway.app"
+API_URL = "https://special-health.onrender.com"
 
 # Para testes
 #API_URL = "http://localhost:8000"
