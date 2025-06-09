@@ -11,7 +11,7 @@ os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
 # URL da API (ajuste se necessário)
 
 # Para produção
-API_URL = "https://web-production-21dc5.up.railway.app/"
+API_URL = "https://special-health.onrender.com"
 
 # Para testes
 #API_URL = "http://localhost:8000"
@@ -26,6 +26,20 @@ if "thread_id" not in st.session_state:
     st.session_state.thread_id = str(uuid.uuid4())
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+# Verificação se a API está pronta (wake-up check)
+with st.spinner("⏳ Aguardando a API iniciar..."):
+    try:
+        wake_response = requests.get(API_URL)  # Substitua por um endpoint leve e público
+        if wake_response.status_code == 200:
+            st.success("✅ API está pronta para uso.")
+        else:
+            st.error(f"⚠️ API respondeu com erro {wake_response.status_code}. Tente novamente em instantes.")
+            st.stop()
+    except Exception as e:
+        st.error(f"❌ Não foi possível conectar à API: {e}")
+        st.stop()
+
 
 # ------------------ TELA DE LOGIN ------------------
 if not st.session_state.access_token:
