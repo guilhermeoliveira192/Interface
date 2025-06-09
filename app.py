@@ -11,7 +11,7 @@ os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
 # URL da API (ajuste se necessário)
 
 # Para produção
-API_URL = "web-production-21dc5.up.railway.app"
+API_URL = "https://web-production-21dc5.up.railway.app/"
 
 # Para testes
 #API_URL = "http://localhost:8000"
